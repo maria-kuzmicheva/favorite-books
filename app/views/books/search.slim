@@ -1,1 +1,11 @@
 h1 результаты поиска по запросу "#{@query}"  
+
+
+
+
+- @books_data.each do |book|
+
+    = render partial: "card", locals: { book: book }
+ 
+
+

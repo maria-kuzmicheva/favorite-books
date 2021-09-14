@@ -1,0 +1,18 @@
+
+.card
+  .book-image
+    img src = book["volumeInfo"]["imageLinks"]["smallThumbnail"] width="250" 
+      
+  .book-title
+    h3 = book["volumeInfo"]["title"]
+  .book-summary
+    h4 = book ["volumeInfo"]["description"]
+  .book-author
+    h5 =  book["volumeInfo"]["authors"].try(:join, ", ")
+  .favorite
+     =simple_form_for(Book.new) do |f|
+      =f.hidden_field :title, :value => book["volumeInfo"]["title"]
+      =f.hidden_field :authors, :value => book["volumeInfo"]["authors"]
+      =f.button :button
+
+  
