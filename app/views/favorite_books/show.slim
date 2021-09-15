@@ -1,0 +1,9 @@
+h1 список любимых   
+
+
+
+
+- @books.find_each do |books|
+
+
+  = render partial: "card", locals: { books: books}

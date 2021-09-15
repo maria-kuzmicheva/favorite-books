@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   
   get "/firstpage", to: "pages#firstpage"
   
-  resource :books
+  get "/search", to: "search#index"
+  
+  resources :favorite_books
   get "/search", to: "books#search"
+
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
