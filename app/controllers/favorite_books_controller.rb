@@ -18,6 +18,12 @@ class FavoriteBooksController < ApplicationController
         redirect_to favorite_books_path
     
     end
+
+    def destroy
+        FavoriteBook.find(params[:id]).destroy
+        redirect_to favorite_books_path
+    
+    end
     
     private
 
