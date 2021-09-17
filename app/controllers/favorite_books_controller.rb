@@ -12,10 +12,16 @@ class FavoriteBooksController < ApplicationController
 
     def create
        
-        #book = 
+        book = FavoriteBook.create(favorite_book_params)
         
-        FavoriteBook.create(favorite_book_params)
-        redirect_to favorite_books_path
+        
+        if book.valid? 
+            flash[:notice] = "книга добавлена в Избранное" 
+            redirect_to favorite_books_path
+        else
+            flash[:notice] = "книга ранее добавлена в Избранное"
+            redirect_back(fallback_location: search_path)
+        end
     
     end
 
@@ -28,7 +34,7 @@ class FavoriteBooksController < ApplicationController
     private
 
     def favorite_book_params
-      params.require(:favorite_book).permit(:title, :author_name)
+      params.require(:favorite_book).permit(:title, :author_name, :book_api_id)
     end
 
 end

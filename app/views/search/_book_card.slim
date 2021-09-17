@@ -12,6 +12,7 @@
      =simple_form_for(FavoriteBook.new) do |f|
       =f.hidden_field :title, :value => book["volumeInfo"]["title"]
       =f.hidden_field :author_name, :value => book["volumeInfo"]["authors"]
+      =f.hidden_field :book_api_id, :value => book["id"]
       =f.button :button
 
   
