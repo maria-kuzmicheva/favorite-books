@@ -1,0 +1,9 @@
+p
+=simple_form_for(User.new) do |f|
+  =f.input :full_name, label: 'имя фамилия'
+  =f.input :nickname, label: 'псевдоним'
+  =f.input :email, label: 'электронный адрес'
+  =f.input :new_password, label: 'пароль'
+  =f.input :new_password_confirmation, label: 'повторите пароль'
+  =f.button :button
+
