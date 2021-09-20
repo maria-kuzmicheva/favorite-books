@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :users do
     get 'sign_up', on: :collection
   end
+
+  #get "/users_accounts", to: "users_accounts"#show
+
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

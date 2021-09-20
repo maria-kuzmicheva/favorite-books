@@ -3,6 +3,9 @@ class User < ApplicationRecord
 
     #EMAIL_REGEX = /[\\w!#$%&'*+\/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+\/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$/ 
 
+    attr_accessor :new_password, :new_password_confirmation
+    
+
     def password
       @password ||= Password.new(self.password_digest)
     end
