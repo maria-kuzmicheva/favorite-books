@@ -20,6 +20,7 @@ class UsersController < ApplicationController
         
     end
 
+
     def correct_password?
       new_password              =  params.dig(:user, :new_password)
       new_password_confirmation =  params.dig(:user, :new_password_confirmation)
@@ -30,5 +31,29 @@ class UsersController < ApplicationController
       params.require(:user).permit(:full_name, :nickname, :email, :new_password, :new_password_confirmation)
     end
  
+    def login 
+        @user = User.find_by(email: params[:email])
+          if @user.present?
 
+            if right_password?
+                jwt_token = token(@user.id)
+                cookies[:auth_token] = jwt_token
+                redirect_to favorite_books_path
+            else
+                flash[:notice] = " извините, пароль неверен" 
+                redirect_to login_path
+            end
+               
+          else
+            flash[:notice] = " извините, пользователь не найден" 
+            redirect_to root_path
+            
+          end
+    end
+
+    private 
+    def right_password?
+        @user.password == params[:password]
+    end
+   
 end

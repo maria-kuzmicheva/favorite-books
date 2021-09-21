@@ -5,3 +5,12 @@ p
   = form.text_field :query 
   = form.submit "Search"
   
+= form_with url: "/login", method: :get do |form| 
+  = form.submit "sign_in"
+    redirect_to login_path
+
+= form_with url: new_user_path, method: :get do |form| 
+  = form.submit "sign_up"
+    redirect_to @users
+
+    

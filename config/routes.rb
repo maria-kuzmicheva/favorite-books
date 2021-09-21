@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "start#search"
-
+  
   
   get "/firstpage", to: "pages#firstpage"
   
@@ -11,7 +11,12 @@ Rails.application.routes.draw do
 
   resources :users do
     get 'sign_up', on: :collection
+    post 'login', on: :collection
   end
+
+  get "/login", to: "start#login"
+
+  
 
   #get "/users_accounts", to: "users_accounts"#show
 
