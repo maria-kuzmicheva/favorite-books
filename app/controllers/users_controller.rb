@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+   
     
     def create 
         if correct_password? 
@@ -31,6 +33,8 @@ class UsersController < ApplicationController
       params.require(:user).permit(:full_name, :nickname, :email, :new_password, :new_password_confirmation)
     end
  
+
+
     def login 
         @user = User.find_by(email: params[:email])
           if @user.present?
