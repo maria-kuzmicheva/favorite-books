@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-
-   
     
     def create 
         if correct_password? 

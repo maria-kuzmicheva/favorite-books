@@ -3,7 +3,7 @@ class FavoriteBooksController < ApplicationController
 
     def index
         flash[:notice] = "ваш имейл #{@current_user.email}" 
-        @books = FavoriteBook.all
+        @books = @current_user.favorite_books
         
     end
     
