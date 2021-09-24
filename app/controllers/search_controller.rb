@@ -6,6 +6,7 @@ class SearchController < ApplicationController
         search_results = BookFetcher.call(@query)
 
         @books_data = search_results.to_a
+        
     end
 
 end

@@ -3,8 +3,7 @@ class FavoriteBooksController < ApplicationController
 
     def index
         flash[:notice] = "ваш имейл #{@current_user.email}" 
-        @books = @current_user.favorite_books
-        
+        @books = @current_user.favorite_books.order(:created_at).page(params[:page]).per(2)
     end
     
     def show
@@ -13,8 +12,7 @@ class FavoriteBooksController < ApplicationController
 
     def create
        
-        book = FavoriteBook.create(favorite_book_params)
-        
+        book = @current_user.favorite_books.create(favorite_book_params)
         
         if book.valid? 
             flash[:notice] = "книга добавлена в Избранное" 
