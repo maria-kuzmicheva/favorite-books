@@ -3,3 +3,22 @@ h1 результат поиска
 - @books_data.each  do |book|
 
   = render partial: "book_card", locals: { book: book}
+
+
+- if params[:start_index].present? && (params[:start_index].to_i) > 10
+  =form_with url: "/search", method: :get do |form| 
+      =form.hidden_field :start_index, :value => (params[:start_index].to_i - 10) 
+      = form.hidden_field :query , :value => params[:query]
+      =form.submit "previous"  
+
+-if @books_data.count == 10
+   =form_with url: "/search", method: :get do |form| 
+     =form.hidden_field :start_index, :value => (params[:start_index].to_i + 10) 
+     = form.hidden_field :query ,  :value => params[:query]
+     =form.submit "next"  
+  
+  
+  
+
+
+
