@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_many :favorite_books
+    has_and_belongs_to_many :favorite_books
     
     include ::BCrypt
 

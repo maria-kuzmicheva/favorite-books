@@ -12,13 +12,17 @@ class FavoriteBooksController < ApplicationController
 
     def create
        
-        book = @current_user.favorite_books.create(favorite_book_params)
+        #book = @current_user.favorite_books.create(favorite_book_params)
+        book = FavoriteBook.find_by(book_api_id: params[:book_api_id])
         
-        if book.valid? 
+        if book.present? 
+            
             flash[:notice] = "книга добавлена в Избранное" 
+            @current_user.favorite_books << book
             redirect_to favorite_books_path
         else
             flash[:notice] = "книга ранее добавлена в Избранное"
+            @current_user.favorite_books.create(favorite_book_params)
             redirect_back(fallback_location: search_path)
         end
     

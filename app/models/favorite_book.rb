@@ -1,5 +1,5 @@
 class FavoriteBook < ApplicationRecord
-    belongs_to :user
-    validates :book_api_id, uniqueness: {scope: :user_id }
+    has_and_belongs_to_many :users
+    validates :book_api_id, uniqueness: true
    
 end
