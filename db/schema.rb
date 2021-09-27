@@ -10,13 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_27_083851) do
+ActiveRecord::Schema.define(version: 2021_09_27_180226) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "author_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.integer "favorite_book_id"
+    t.integer "parent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["favorite_book_id"], name: "index_comments_on_favorite_book_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "favorite_books", force: :cascade do |t|
