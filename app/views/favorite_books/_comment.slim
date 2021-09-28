@@ -1,0 +1,12 @@
+.comment-card
+
+  
+
+  .comment-text
+   = raw(comment.content)
+  .comment-date
+  = comment.created_at
+
+.comment-author
+    h5 = comment.user.nickname
+   
