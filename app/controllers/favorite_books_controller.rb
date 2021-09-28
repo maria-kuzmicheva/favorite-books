@@ -8,6 +8,7 @@ class FavoriteBooksController < ApplicationController
     
     def show
         @book = FavoriteBook.find(params[:id])
+        
     end
 
     def create

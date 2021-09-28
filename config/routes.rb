@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   end
 
   get "/login", to: "start#login"
-
   
+  resources :comments, only: [:create, :destroy]
+
 
   #get "/users_accounts", to: "users_accounts"#show
 
