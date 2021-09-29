@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   get "/login", to: "start#login"
   
   resources :comments, only: [:create, :destroy]
-
+  
+  
+  post "/users/log_out", to: "users#log_out"
+  
+  
 
   #get "/users_accounts", to: "users_accounts"#show
 

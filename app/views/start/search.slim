@@ -13,4 +13,8 @@ p
   = form.submit "sign_up"
     redirect_to @users
 
-    
+p 
+
+=form_with url: "/users/log_out", method: :post do |form|
+    =form.submit 'log_out'
+     redirect_to root_path

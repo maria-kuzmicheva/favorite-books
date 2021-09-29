@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+.log_out{
+        position: absolute;
+        left: 2.64%;
+        right: 78.49%;
+        top: 38.87%;
+        bottom: 59.03%;
+
+        position: absolute;
+        left: 4.8%;
+        right: 4.8%;
+        top: 20%;
+        bottom: 20%;
+        
+        /* Desktop / Link Small */
+        
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 28px;
+        /* or 175% */
+        
+        display: flex;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.75px;
+        
+        /* Grayscale / Background */
+        
+        color: #F7F7FC
+    }

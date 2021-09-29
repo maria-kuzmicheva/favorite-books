@@ -2,8 +2,12 @@ class StartController < ApplicationController
     def search
  
     end
-    def login
+    #def login
         
-    end
+    #end
+
+    #def log_out
+
+    #end
     
 end

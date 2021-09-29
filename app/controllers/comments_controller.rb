@@ -2,10 +2,13 @@ class CommentsController < ApplicationController
     
     
     def create
-     Comment.create(comments_params)
-     flash[:notice] = "ваш комментарий успешно добавлен"
-     redirect_to favorite_book_path(comments_params[:favorite_book_id])
-     
+      Comment.create(comments_params) 
+     if @current_user.present?
+        Comment.create(comments_params) 
+        flash[:notice] = "ваш комментарий успешно добавлен"
+        redirect_to favorite_book_path(comments_params[:favorite_book_id])
+     else
+        flash[:notice] = "для комментирования войдите в профиль "
     end    
     
     def reply

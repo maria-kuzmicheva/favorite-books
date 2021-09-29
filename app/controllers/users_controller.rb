@@ -53,6 +53,19 @@ class UsersController < ApplicationController
           end
     end
 
+    def log_out
+
+          if @user.present?
+              
+                cookies[:auth_token] = nil
+                redirect_to root_path
+            else
+                flash[:notice] = " извините, вы не вошли в систему" 
+                redirect_to login_path
+            
+          end
+    end
+
     private 
     def right_password?
         @user.password == params[:password]
