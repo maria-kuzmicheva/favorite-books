@@ -1,0 +1,17 @@
+p  
+
+
+table border="1" 
+  caption Статистика
+  tr
+    th имя пользователя
+    th number of favbooks
+  - @statistic.each do |nickname, favorite_books_count|
+    tr
+      td = nickname
+      td = favorite_books_count
+
+
+
+    
+  

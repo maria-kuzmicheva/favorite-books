@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   
   post "/users/log_out", to: "users#log_out"
   
+  get "/admin/stat", to: "admin#stat"
   
 
   #get "/users_accounts", to: "users_accounts"#show
