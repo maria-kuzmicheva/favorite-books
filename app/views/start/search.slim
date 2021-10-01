@@ -1,16 +1,19 @@
 
 p
-
-= form_with url: "/search", method: :get do |form| 
-  = form.label :query, "Search for:" 
-  = form.text_field :query 
-  = form.submit "Search"
+.mdl-grid
+    .mdl-cell.mdl-cell--4-col
+    .mdl-cell.mdl-cell--6-col
+       = form_with url: "/search", method: :get do |form|
+          = form.label :query, "Search for:" , class: "mdl-textfield mdl-js-textfield"
+          = form.text_field :query , class: "mdl-textfield__input"
+          = form.submit "Search" , class: "mdl-button mdl-js-button mdl-button--raised"
+    .mdl-cell.mdl-cell--2-col
   
-= form_with url: "/login", method: :get do |form| 
-  = form.submit "sign_in"
-    redirect_to login_path
+//= form_with url: "/login", method: :get do |form| 
+  //= form.submit "sign_in"
+    //redirect_to login_path
 
-= form_with url: new_user_path, method: :get do |form| 
-  = form.submit "sign_up"
-    redirect_to @users
+//= form_with url: new_user_path, method: :get do |form| 
+  //= form.submit "sign_up"
+    //redirect_to @users
 

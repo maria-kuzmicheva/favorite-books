@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+    before_action :require_current_user
     def index
         #@query = params[:query]
         #params = {query: "gay", commit: "Search"}

@@ -54,8 +54,8 @@ class UsersController < ApplicationController
     end
 
     def log_out
-
-          if @user.present?
+          require_current_user
+          if @current_user.present?
               
                 cookies[:auth_token] = nil
                 redirect_to root_path

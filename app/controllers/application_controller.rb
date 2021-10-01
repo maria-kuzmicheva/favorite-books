@@ -14,23 +14,28 @@ class ApplicationController < ActionController::Base
     end
   
     def current_user_id
-      begin
-        token = cookies[:auth_token]
-        decoded_array = JWT.decode(token, hmac_secret, true, { algorithm: 'HS256' })
-        payload = decoded_array.first
-      rescue JWT::VerificationError
-        return nil
+      if cookies[:auth_token].present?
+        begin
+          decoded_array = JWT.decode(cookies[:auth_token], hmac_secret, true, { algorithm: 'HS256' })
+          payload = decoded_array.first
+        rescue JWT::VerificationError
+          return nil
+        end
+        payload["user_id"]
       end
-      payload["user_id"]
     end
   
     def require_login
       render json: {error: 'Unauthorized'}, status: :unauthorized if !client_has_valid_token?
     end
 
+    def require_current_user
+      @current_user = User.find_by(id: current_user_id) if current_user_id
+    end
+
     def auth
      if current_user_id.present?
-       @current_user = User.find_by(id: current_user_id)
+      require_current_user
      else
        flash[:notice] = " пожалуйста, войдите в систему" 
        redirect_to login_path

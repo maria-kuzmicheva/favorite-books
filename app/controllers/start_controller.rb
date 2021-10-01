@@ -1,10 +1,13 @@
 class StartController < ApplicationController
+    before_action :require_current_user
+
     def search
  
     end
-    #def login
+    
+    def login
         
-    #end
+    end
 
     #def log_out
 

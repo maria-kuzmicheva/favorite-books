@@ -1,0 +1,12 @@
+html, body {
+    font-family: 'Roboto', 'Helvetica', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .mdl-layout__tab {
+    position: absolute;
+    left: 110px;
+    right: 10px;
+    top: 6px;
+    z-index: 999;
+  }

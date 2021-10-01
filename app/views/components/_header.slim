@@ -3,9 +3,18 @@ header.mdl-layout__header.mdl-layout__header--scroll.mdl-color--primary
     span.mdl-layout-title Favorite Book
     .mdl-layout-spacer
     .nav.mdl-navigation.mdl-layout--large-screen-only
-
+      - if @current_user.present?
           = form_with url: "/users/log_out", method: :post do |form|
             = form.submit 'log_out', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+      - else      
+          = form_with url: "/login", method: :get do |form| 
+            = form.submit "sign_in", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+          = form_with url: new_user_path, method: :get do |form| 
+            = form.submit "sign_up", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+              
+
+
+
 
      
 
