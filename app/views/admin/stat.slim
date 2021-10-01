@@ -1,16 +1,20 @@
 p  
 
+.mdl-grid
+    .mdl-cell.mdl-cell--4-col
+    .mdl-cell.mdl-cell--4-col
+        table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+            caption Статистика
+            tr
+                th имя пользователя
+                th number of favbooks
+            - @statistic.each do |nickname, favorite_books_count|
+                tr
+                    td = nickname
+                    td = favorite_books_count
 
-table border="1" 
-  caption Статистика
-  tr
-    th имя пользователя
-    th number of favbooks
-  - @statistic.each do |nickname, favorite_books_count|
-    tr
-      td = nickname
-      td = favorite_books_count
-
+    .mdl-cell.mdl-cell--4-col
+       
 
 
     

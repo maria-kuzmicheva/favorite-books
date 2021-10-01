@@ -1,0 +1,11 @@
+header.mdl-layout__header.mdl-layout__header--scroll.mdl-color--primary
+  .mdl-layout__header-row
+    span.mdl-layout-title Favorite Book
+    .mdl-layout-spacer
+    .nav.mdl-navigation.mdl-layout--large-screen-only
+
+          = form_with url: "/users/log_out", method: :post do |form|
+            = form.submit 'log_out', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+
+     
+
