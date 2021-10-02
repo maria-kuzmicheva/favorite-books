@@ -13,10 +13,16 @@
                 = raw(comment.content)
     .mdl-grid
         .mdl-cell.mdl-cell--2-col
+        
              = "ваша оценка"
         .mdl-cell.mdl-cell--8-col
         .mdl-cell.mdl-cell--2-col
-          = "кнопка удалить"
+          .comment-destroy
+          
+            =simple_form_for comment, method: :delete do |f|
+                =f.button :button,  'delete', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+
+
 
             
        
