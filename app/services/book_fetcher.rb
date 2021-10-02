@@ -2,9 +2,19 @@ class BookFetcher
     BOOKS_API_DOMAIN      = 'https://www.googleapis.com'.freeze
     BOOKS_API_COMMON_PATH = '/books/v1'.freeze
 
+    
+    def self.get_by_id(book_api_id)
+        common_path = BOOKS_API_DOMAIN + BOOKS_API_COMMON_PATH
+        body = Faraday.get("#{common_path}/volumes/#{book_api_id}").body
+        @book_api_data = JSON.parse(body)
+    end
+
+    
+
     def self.call(query, start_index)
         new(query, start_index)
     end
+
      
     def initialize(query, start_index)
         @query       = query
@@ -21,13 +31,11 @@ class BookFetcher
         Faraday.get("#{common_path}/volumes?q=#{@query}&startIndex=#{@start_index}")
     end
 
+
     private
 
     def common_path
         BOOKS_API_DOMAIN + BOOKS_API_COMMON_PATH
     end 
 
-     def client
-        Faraday.new
-    end
 end

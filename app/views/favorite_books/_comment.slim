@@ -1,12 +1,24 @@
-.comment-card
+.comment-card.
+    .mdl-grid
+        .mdl-cell.mdl-cell--2-col
+          .comment-author
+            = comment.user.nickname
+        .mdl-cell.mdl-cell--8-col
+        .mdl-cell.mdl-cell--2-col
+            .comment-date
+             = comment.created_at.strftime("%Y-%m-%d")
+    .mdl-grid
+            .mdl-cell.mdl-cell--12-col
+            .comment-text
+                = raw(comment.content)
+    .mdl-grid
+        .mdl-cell.mdl-cell--2-col
+             = "ваша оценка"
+        .mdl-cell.mdl-cell--8-col
+        .mdl-cell.mdl-cell--2-col
+          = "кнопка удалить"
 
-  
-
-  .comment-text
-   = raw(comment.content)
-  .comment-date
-  = comment.created_at
-
-.comment-author
-    h5 = comment.user.nickname
-   
+            
+       
+                
+    

@@ -2,3 +2,43 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @use "material-components-web/material-components-web";
+
+.comment-card
+
+  
+
+  .comment-text{
+    font-family: Zeyada;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 15px;
+    
+    color: #1F54DD;
+    
+    
+
+  }
+  .comment-date{
+    font-family: Zeyada;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    
+    color: #42AEFC;
+    
+
+  }
+  
+  .comment-author{ 
+     
+    font-family: Unna;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 10px;
+
+    color: #C90C50;
+
+  }

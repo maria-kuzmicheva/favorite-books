@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
         redirect_to favorite_book_path(comments_params[:favorite_book_id])
      else
         flash[:notice] = "для комментирования войдите в профиль "
+     end    
     end    
     
     def reply

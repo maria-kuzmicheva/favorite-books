@@ -7,6 +7,7 @@ class SearchController < ApplicationController
         #@start_index = params[:start_index]
 
         search_results = BookFetcher.call(params[:query], params[:start_index])
+         
 
         @books_data = search_results.to_a
         

@@ -1,14 +1,68 @@
-h1 =@book.title
 
 
 
-=form_with model: Comment.new, method: :post do |form| 
-  =form.hidden_field :favorite_book_id , :value => @book.id
-  =form.hidden_field :user_id ,          :value => @current_user.id
-  =form.label :'комментарий' 
-  =form.rich_text_area :content 
-  =form.submit :'отправить комментарий'
+.mdl-grid
+    .mdl-cell.mdl-cell--2-col
+    .mdl-cell.mdl-cell--8-col
+      .mdl-grid
+        .mdl-cell.mdl-cell--4-col
+          img src = @book_data["volumeInfo"]["imageLinks"]["smallThumbnail"]
+        .mdl-cell.mdl-cell--6-col
+            .mdl-layout-row
+              = @book_data["volumeInfo"]["title"]
+            .mdl-layout-row
+              = @book_data["volumeInfo"]["subtitle"]
+            .mdl-layout-row
+                = @book_data["volumeInfo"]["authors"].join(", ")
+            .mdl-layout-row
+                = @book_data["volumeInfo"]["publisher"]
+        .mdl-cell.mdl-cell--2-col
+          .mdl-layout-row
+             = @book_data["volumeInfo"]["averageRating"]
+             svg.star-color fill="currentColor" height="24" role="presentation" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
+               path d=("M12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72 3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z") 
 
-h2 
-- @book.comments.each do |comment|
-  =render partial: "comment", locals: {comment: comment}
+          .mdl-layout-row
+              .mdl-chip
+                .mdl-chip__text.mdl-color-text--pink = @book_data["volumeInfo"]["maturityRating"]
+              
+
+      .mdl-grid
+       .mdl-cell.mdl-cell--12-col
+            = @book_data["volumeInfo"]["description"]
+      .mdl-grid 
+        .mdl-cell.mdl-cell--12-col
+          .mdl-layout_header-row 
+            = @favbook_users.map{ |user| link_to(user.nickname, user_path(user)) }.join(", ").html_safe
+
+      .mdl-grid
+        .mdl-cell.mdl-cell--12-col
+          .mdl-layout_header-row 
+                =form_with model: Comment.new, method: :post do |form| 
+                    =form.hidden_field :favorite_book_id , :value => @book.id
+                    =form.hidden_field :user_id ,          :value => @current_user.id
+                    =form.label :'комментарий' 
+                    =form.rich_text_area :content 
+                    =form.submit :'отправить комментарий'
+          
+      .mdl-grid       
+        .mdl-cell.mdl-cell--12-col
+          
+              .mdl-layout_header-row
+               - @book.comments.each do |comment|
+                 =render partial: "comment", locals: {comment: comment}
+            
+    .mdl-cell.mdl-cell--2-col
+
+    
+
+
+
+
+  
+    //#data["volumeInfo"]["averageRating"]
+    //#data["volumeInfo"]["ratingsCount"]
+    //#data["volumeInfo"]["maturityRating"]
+    //#data["volumeInfo"]["description"]  
+    //#data["volumeInfo"]["authors"]
+    //#data["volumeInfo"]["publishedDate"]
