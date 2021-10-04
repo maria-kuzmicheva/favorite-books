@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   
   get "/admin/stat", to: "admin#stat"
   
+  resources :book_lists
 
   #get "/users_accounts", to: "users_accounts"#show
 

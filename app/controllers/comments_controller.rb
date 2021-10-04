@@ -2,11 +2,10 @@ class CommentsController < ApplicationController
     before_action :require_current_user
     
     def create
-      Comment.create(comments_params) 
      if @current_user.present?
-        Comment.create(comments_params) 
+        comment = Comment.create(comments_params) 
         flash[:notice] = "ваш комментарий успешно добавлен"
-        redirect_to favorite_book_path(comments_params[:favorite_book_id])
+        redirect_to favorite_book_path(comment.favorite_book)
      else
         flash[:notice] = "для комментирования войдите в профиль "
      end    
@@ -16,8 +15,9 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        Comment.find(params[:id]).destroy
-        redirect_to_back
+        comment = Comment.find(params[:id])
+        comment.destroy
+        redirect_to  favorite_book_path(comment.favorite_book)
     end
   
     private

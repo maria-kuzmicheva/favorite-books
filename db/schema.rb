@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_28_101237) do
+ActiveRecord::Schema.define(version: 2021_10_04_110203) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -48,6 +48,19 @@ ActiveRecord::Schema.define(version: 2021_09_28_101237) do
     t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "book_lists", force: :cascade do |t|
+    t.string "list_title"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_book_lists_on_user_id"
+  end
+
+  create_table "book_lists_favorite_books", id: false, force: :cascade do |t|
+    t.integer "book_list_id", null: false
+    t.integer "favorite_book_id", null: false
   end
 
   create_table "books", force: :cascade do |t|

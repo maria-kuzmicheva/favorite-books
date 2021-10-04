@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_and_belongs_to_many :favorite_books
     has_many :comments
+    has_many :book_lists
     include ::BCrypt
 
     #EMAIL_REGEX = /[\\w!#$%&'*+\/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+\/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$/ 
