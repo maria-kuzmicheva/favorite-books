@@ -1,8 +1,39 @@
+.mdl-grid
+    .mdl-cell.mdl-cell--2-col
+    .mdl-cell.mdl-cell--10-col.fltitle-show-header
+         =@book_list.list_title
+- @book_list.favorite_books.each do |favorite_book|
+    
+    .mdl-grid
+        .mdl-cell.mdl-cell--2-col
+          
+        .mdl-cell.mdl-cell--8-col.flists-show-common-box
+           
+            .mdl-grid 
+                .mdl-cell.mdl-cell--2-col
+                .mdl-cell.mdl-cell--10-col
+                    =favorite_book.title
+                    .mdl-layout-row
+                    .mdl-grid 
+                        .mdl-cell.mdl-cell--2-col
+                        .mdl-cell.mdl-cell--10-col
+                         =favorite_book.author_name
 
-- @book_list.favorite_books.each do |book|
- =@book_list.id
- =@book_list.list_title
-  
+    .mdc-tab-bar role="tablist" 
+    .mdc-tab-scroller
+        .mdc-tab-scroller__scroll-area
+        .mdc-tab-scroller__scroll-content
+            button.mdc-tab.mdc-tab--active aria-selected="true" role="tab" tabindex="0" 
+            span.mdc-tab__content
+                span.mdc-tab__icon.material-icons aria-hidden="true"  favorite
+                span.mdc-tab__text-label Favorites
+            span.mdc-tab-indicator.mdc-tab-indicator--active
+                span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline
+            span.mdc-tab__ripple
+                            
+                    
+                    
+            
 
 
 

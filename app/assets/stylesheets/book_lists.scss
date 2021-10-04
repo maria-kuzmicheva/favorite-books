@@ -1,3 +1,25 @@
 // Place all the styles related to the book_lists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.fltitle-show-header{
+    font-family: Zeyada;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 15px;
+    
+    color: #e66750;
+
+}
+.flists-show-common-box {
+    background-color: #c0f0bb;
+    font-family: Zeyada;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 15px;
+    
+    color: #23723b;
+}
