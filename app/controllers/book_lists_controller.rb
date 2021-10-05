@@ -6,6 +6,7 @@ class BookListsController < ApplicationController
     def add_book
 
         ::BookListsUpdate.call(params) 
+        
     end
     def show
         @book_list = BookList.find(params[:id])

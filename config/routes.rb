@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   
   get "/search", to: "search#index"
   
-  resources :favorite_books
+  resources :favorite_books do
+    member do
+      get 'to_list'
+    end
+  end
   get "/search", to: "books#search"
 
   resources :users do
@@ -22,10 +26,12 @@ Rails.application.routes.draw do
   post "/users/log_out", to: "users#log_out"
   
   get "/admin/stat", to: "admin#stat"
+
   
-  resources :book_lists do
-    get 'add_book', on: :collection
-  end
+  
+  #resources :book_lists do
+    #get 'add_book', on: :collection
+  #end
 
   #get "/users_accounts", to: "users_accounts"#show
 

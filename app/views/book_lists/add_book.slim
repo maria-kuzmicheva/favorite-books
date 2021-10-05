@@ -1,1 +1,22 @@
-p heelo
+
+
+
+ .mdl-grid
+    .mdl-cell.mdl-cell--2-col
+    .mdl-cell.mdl-cell--8-col
+         .mdl-grid
+            .mdl-cell.mdl-cell--2-col
+            .mdl-cell.mdl-cell--8-col
+                .mdc-form-field
+                    .mdc-checkbox
+                        input#checkbox-1.mdc-checkbox__native-control type="checkbox" /
+                        .mdc-checkbox__background
+                        svg.mdc-checkbox__checkmark viewbox=("0 0 24 24") 
+                            path.mdc-checkbox__checkmark-path d="M1.73,12.91 8.1,19.28 22.79,4.59" fill="none" /
+                        .mdc-checkbox__mixedmark
+                        .mdc-checkbox__ripple
+                    label for="checkbox-1"  
+                        =@book_list.list_title
+            .mdl-cell.mdl-cell--2-col        
+
+    .mdl-cell.mdl-cell--2-col

@@ -1,5 +1,7 @@
 class FavoriteBooksController < ApplicationController
-    before_action :auth, only: [:index, :show, :create, :destroy]
+    
+    before_action  :auth, only: [:index, :to_list,:show, :create, :destroy]
+   
 
     def index
         flash[:notice] = "ваш имейл #{@current_user.email}" 
@@ -13,6 +15,11 @@ class FavoriteBooksController < ApplicationController
              
    
     end
+
+    def to_list
+        @user_lists = @current_user.book_lists
+    end
+
 
     def create
        
