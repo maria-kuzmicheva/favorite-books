@@ -29,9 +29,9 @@ Rails.application.routes.draw do
 
   
   
-  #resources :book_lists do
-    #get 'add_book', on: :collection
-  #end
+  resources :book_lists do
+    post 'add_book', on: :collection
+  end
 
   #get "/users_accounts", to: "users_accounts"#show
 

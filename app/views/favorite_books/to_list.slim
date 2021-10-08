@@ -1,45 +1,56 @@
-.mdl-grid
-    .mdl-cell.mdl-cell--4-col
-    .mdl-cell.mdl-cell--6-col
-        - @user_lists.each do |list|
-            list
-            .mdl-grid
-                .mdl-cell.mdl-cell--2-col
-                .mdl-cell.mdl-cell--8-col
-                    .mdc-form-field
-                        .mdc-checkbox
-                            input#checkbox-1.mdc-checkbox__native-control type="checkbox" /
-                            .mdc-checkbox__background
-                            svg.mdc-checkbox__checkmark viewbox=("2 2 24") 
-                                path.mdc-checkbox__checkmark-path d="M1.73,12.91 8.1,19.28 22.79,4.59" fill="none" /
-                            .mdc-checkbox__mixedmark
-                            .mdc-checkbox__ripple
-                                label for="checkbox-1" 
-                                    = list.list_title
-                .mdl-cell.mdl-cell--2-col
-        .mdl-layout_header-row 
-        .mdl-grid
-            .mdl-cell.mdl-cell--2-col
-            .mdl-cell.mdl-cell--8-col
-                label.mdc-text-field.mdc-text-field--filled.mdc-text-field--label-floating
-                    span.mdc-text-field__ripple
-                    span#my-label-id.mdc-floating-label.mdc-floating-label--float-above
-                        | 
-                    input.mdc-text-field__input aria-labelledby="my-label-id" type="text" value=("название нового буклиста") /
-                    span.mdc-line-ripple
-                                               
-        .mdl-cell.mdl-cell--2-col
+
+= form_with url: add_book_book_lists_path do |form| 
+    - @user_lists.each do |list|
+        = form.label     list.list_title
+        = form.check_box "book_list__#{list.id}"
+    =form.hidden_field :favorite_book_id, :value => (params[:id]) 
+    = form.text_field :new_list
+    = form.submit "добавить"
+
+
         .mdl-grid
             .mdl-cell.mdl-cell--4-col
-                 = simple_form_for link_to favorite_book_path(params[:id]) do |form|
-                    = form.submit "назад", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+            .mdl-cell.mdl-cell--6-col
+              
+                    list
+                    .mdl-grid
+                        .mdl-cell.mdl-cell--2-col
+                        .mdl-cell.mdl-cell--8-col
+                            .mdc-form-field
+                                .mdc-checkbox
+                                    input#checkbox-1.mdc-checkbox__native-control type="checkbox" /
+                                    .mdc-checkbox__background
+                                    svg.mdc-checkbox__checkmark viewbox=("2 2 24") 
+                                        path.mdc-checkbox__checkmark-path d="M1.73,12.91 8.1,19.28 22.79,4.59" fill="none" /
+                                    .mdc-checkbox__mixedmark
+                                    .mdc-checkbox__ripple
+                                        label for="checkbox-1" 
+                                            = list.list_title
+                        .mdl-cell.mdl-cell--2-col
+              
+                    .mdl-grid
+                        .mdl-cell.mdl-cell--2-col
+                        .mdl-cell.mdl-cell--8-col
+                            label.mdc-text-field.mdc-text-field--filled.mdc-text-field--label-floating
+                                span.mdc-text-field__ripple
+                                span#my-label-id.mdc-floating-label.mdc-floating-label--float-above
+                                    | 
+                                input.mdc-text-field__input aria-labelledby="my-label-id" type="text" value=("название нового буклиста") /
+                                span.mdc-line-ripple
+                                                        
+                    .mdl-cell.mdl-cell--2-col
+                    .mdl-grid
+                        .mdl-cell.mdl-cell--4-col
+                            = simple_form_for link_to favorite_book_path(params[:id]) do |form|
+                                = form.submit "назад", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
 
-            .mdl-cell.mdl-cell--4-col
-            .mdl-cell.mdl-cell--4-col
-                = form_with action: "add_book", method: :post do |form| 
-                    = form.submit "добавить", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-    .mdl-cell.mdl-cell--2-col          
+                        .mdl-cell.mdl-cell--4-col
+                        .mdl-cell.mdl-cell--4-col
+                            = form_with action: "add_book", method: :post do |form| 
+                                = form.submit "добавить", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+            .mdl-cell.mdl-cell--2-col          
 
 
 
-            
+
+                    
