@@ -33,6 +33,7 @@ class BookListsUpdate
     end
 
     private
+
     def favorite_book
         FavoriteBook.find(@favorite_book_id)
     end

@@ -25,6 +25,11 @@
           .mdl-layout-row
               .mdl-chip
                 .mdl-chip__text.mdl-color-text--pink = @book_data["volumeInfo"]["maturityRating"]
+          .mdl-layout-row
+               = link_to "добавить в буклист", to_list_favorite_book_path(@book.id) , class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+
+                   
+
               
 
       .mdl-grid
