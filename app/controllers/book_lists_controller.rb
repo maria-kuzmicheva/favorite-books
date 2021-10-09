@@ -1,5 +1,6 @@
 class BookListsController < ApplicationController
-    before_action :auth
+    before_action :auth, except: [:show]
+
     def create
     end
 
@@ -9,11 +10,18 @@ class BookListsController < ApplicationController
         flash[:notice] = "книжка добавлена в указанные буклисты" 
         redirect_to favorite_book_path(params[:favorite_book_id ])
         
-        
     end
+
     def show
+        require_current_user
         @book_list = BookList.find(params[:id])
-        #@book_list.favorite_books
+
+        if (@current_user.book_lists.find_by(id: params[:id]).present? if @current_user) || @book_list.public?
+            render :show
+        else
+            flash[:notice] = "извините этот буклист не является публичным" 
+            redirect_to root_path
+        end    
     end
 
     def update
@@ -25,6 +33,7 @@ class BookListsController < ApplicationController
         redirect_to book_list_path(params[:id])
     
     end
+
 
     def delete
     end
