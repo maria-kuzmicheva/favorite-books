@@ -13,10 +13,17 @@ class BookListsController < ApplicationController
     end
     def show
         @book_list = BookList.find(params[:id])
-        @book_list.favorite_books
+        #@book_list.favorite_books
     end
 
     def update
+    end
+
+    def detach_book
+        book_list = BookList.find(params[:id])
+        book_list.favorite_books.destroy(params[:favorite_book_id])
+        redirect_to book_list_path(params[:id])
+    
     end
 
     def delete

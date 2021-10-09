@@ -19,18 +19,27 @@
                         .mdl-cell.mdl-cell--10-col
                          =favorite_book.author_name
 
-    .mdc-tab-bar role="tablist" 
-    .mdc-tab-scroller
-        .mdc-tab-scroller__scroll-area
-        .mdc-tab-scroller__scroll-content
-            button.mdc-tab.mdc-tab--active aria-selected="true" role="tab" tabindex="0" 
-            span.mdc-tab__content
-                span.mdc-tab__icon.material-icons aria-hidden="true"  favorite
-                span.mdc-tab__text-label Favorites
-            span.mdc-tab-indicator.mdc-tab-indicator--active
-                span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline
-            span.mdc-tab__ripple
-                            
+            .mdl-grid 
+                .mdl-cell.mdl-cell--2-col
+                .mdl-cell.mdl-cell--10-col
+                    .mdc-tab-bar role="tablist" 
+                    .mdc-tab-scroller
+                        .mdc-tab-scroller__scroll-area
+                        .mdc-tab-scroller__scroll-content
+                            button.mdc-tab.mdc-tab--active aria-selected="true" role="tab" tabindex="0" 
+                            span.mdc-tab__content
+                                span.mdc-tab__icon.material-icons aria-hidden="true"  favorite
+                                span.mdc-tab__text-label Favorites
+                            span.mdc-tab-indicator.mdc-tab-indicator--active
+                                span.mdc-tab-indicator__content.mdc-tab-indicator__content--underline
+                            span.mdc-tab__ripple
+                .mdl-cell.mdl-cell--2-col
+                         = form_with url: detach_book_book_list_path(id: @book_list.id), method: :delete do |f|
+                            =f.hidden_field :favorite_book_id , :value => favorite_book.id
+                            =f.submit  'удалить из буклиста', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+
+
+                                
                     
                     
             

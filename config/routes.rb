@@ -30,8 +30,14 @@ Rails.application.routes.draw do
   
   
   resources :book_lists do
-    post 'add_book', on: :collection
+    post   'add_book',       on: :collection 
+    delete 'detach_book',    on: :member
   end
+
+
+
+  
+
 
   #get "/users_accounts", to: "users_accounts"#show
 
