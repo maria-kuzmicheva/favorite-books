@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     delete 'detach_book',    on: :member
   end
 
-
+  get '/:id' => "shortener/shortened_urls#show"
 
   
 

@@ -1,4 +1,5 @@
 class BookListsController < ApplicationController
+    
     before_action :auth, except: [:show]
 
     def create
@@ -13,10 +14,10 @@ class BookListsController < ApplicationController
     end
 
     def show
-        require_current_user
+        
         @book_list = BookList.find(params[:id])
-
-        if (@current_user.book_lists.find_by(id: params[:id]).present? if @current_user) || @book_list.public?
+        require_current_user
+        if (@current_user.book_lists.find_by(id: params[:id]).present? if @current_user.present?) || @book_list.public?
             render :show
         else
             flash[:notice] = "извините этот буклист не является публичным" 

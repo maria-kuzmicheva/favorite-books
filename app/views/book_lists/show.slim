@@ -37,6 +37,14 @@
                          = form_with url: detach_book_book_list_path(id: @book_list.id), method: :delete do |f|
                             =f.hidden_field :favorite_book_id , :value => favorite_book.id
                             =f.submit  'удалить из буклиста', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+            .mdl-grid 
+                .mdl-cell.mdl-cell--2-col
+                .mdl-cell.mdl-cell--10-col
+                   - qrcode  = RQRCode::QRCode.new(request.url)
+                   = qrcode.as_svg(color: "000", shape_rendering: "crispEdges", module_size: 11, standalone: true, use_path: true).html_safe
+  
+
+                
 
 
                                 
