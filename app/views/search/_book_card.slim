@@ -1,18 +1,33 @@
-.card
-  .book-image
-    img src = book["volumeInfo"]["imageLinks"]["smallThumbnail"] width="250" 
+ 
+  .mdl-grid
+    .mdl-cell.mdl-cell--2-col
+    .mdl-cell.mdl-cell--8-col
       
-  .book-title
-    h3 = book["volumeInfo"]["title"]
-  .book-summary
-    h4 = book ["volumeInfo"]["description"]
-  .book-author
-    h5 =  book["volumeInfo"]["authors"].try(:join, ", ")
-  .favorite
-     =simple_form_for(FavoriteBook.new) do |f|
-      =f.hidden_field :title, :value => book["volumeInfo"]["title"]
-      =f.hidden_field :author_name, :value => book["volumeInfo"]["authors"]
-      =f.hidden_field :book_api_id, :value => book["id"]
-      =f.button :button
+      .card
+        .mdl-cell.mdl-cell--4-col
+        .book-image
+              img src = book["volumeInfo"]["imageLinks"]["smallThumbnail"] width="250"
+        .mdl-cell.mdl-cell--12-col
+        
+            .book-title
+              h3 = book["volumeInfo"]["title"]
+            .book-summary
+              h4 = book ["volumeInfo"]["description"]
+            .mdl-grid
+              .mdl-cell.mdl-cell--9-col
+              .mdl-cell.mdl-cell--3-col  
+                .book-author
+                  h5 =  book["volumeInfo"]["authors"].try(:join, ", ")
+            .mdl-grid
+              .mdl-cell.mdl-cell--9-col
+              .mdl-cell.mdl-cell--3-col
+                      
+                .favorite
+                  =simple_form_for(FavoriteBook.new) do |f|
+                    =f.hidden_field :title, :value => book["volumeInfo"]["title"]
+                    =f.hidden_field :author_name, :value => book["volumeInfo"]["authors"]
+                    =f.hidden_field :book_api_id, :value => book["id"]
+                    =f.button :button, class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+          
 
-  
+            

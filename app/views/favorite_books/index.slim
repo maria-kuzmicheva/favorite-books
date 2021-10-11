@@ -1,8 +1,12 @@
-h1 список любимых
+ список любимых
 
 - @books.find_each do |favorite_book|
+   .mdl-grid
+      .mdl-cell.mdl-cell--4-col
+      .mdl-cell.mdl-cell--6-col
+         = render partial: "card", locals: { favorite_book: favorite_book}
+      .mdl-cell.mdl-cell--2-col
 
-   = render partial: "card", locals: { favorite_book: favorite_book}
 
 = paginate @books
 

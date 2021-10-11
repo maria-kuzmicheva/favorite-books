@@ -1,11 +1,15 @@
-.favorite-card
 
-      
-  .fav-book-title
-    h3 = favorite_book.title
+      .favorite-card
   
-  .fav-book-author
-    h5 =  favorite_book.author_name
+      fav-book-title
+      h3 = favorite_book.title
+    .mdl-cell.mdl-cell--2-col
+
+  .mdl-grid
+    .mdl-cell.mdl-cell--2-col
+    .mdl-cell.mdl-cell--8-col  
+      .fav-book-author
+       h5 =  favorite_book.author_name
   
   .destroy
     =simple_form_for favorite_book, method: :delete do |f|
