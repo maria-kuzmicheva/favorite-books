@@ -1,17 +1,22 @@
 
-      .favorite-card
-  
-      fav-book-title
-      h3 = favorite_book.title
-    .mdl-cell.mdl-cell--2-col
-
-  .mdl-grid
-    .mdl-cell.mdl-cell--2-col
-    .mdl-cell.mdl-cell--8-col  
-      .fav-book-author
-       h5 =  favorite_book.author_name
-  
-  .destroy
-    =simple_form_for favorite_book, method: :delete do |f|
       
-      =f.button :button,  'delete'
+     .favorite-card
+      .mdl-grid
+        .mdl-cell.mdl-cell--2-col
+        .mdl-cell.mdl-cell--8-col
+        
+            .fav-book-title
+              h3 = favorite_book.title
+        
+
+          
+            .fav-book-author
+                h5 =  favorite_book.author_name
+            .mdl-grid
+                .mdl-cell.mdl-cell--9-col
+                .mdl-cell.mdl-cell--3-col
+                  .destroy
+                    =simple_form_for favorite_book, method: :delete do |f|
+                      
+                      =f.button :button,  'delete', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+        .mdl-cell.mdl-cell--2-col
