@@ -7,8 +7,17 @@ p
           = form.label :query, "Search for:" , class: "mdl-textfield mdl-js-textfield"
           = form.text_field :query , class: "mdl-textfield__input"
           = form.submit "Search" , class: "mdl-button mdl-js-button mdl-button--raised"
+
+    
     .mdl-cell.mdl-cell--2-col
-  
+      
+       
+.mdl-grid
+    .mdl-cell.mdl-cell--4-col
+    .mdl-cell.mdl-cell--6-col   
+      -@book_lists.each do |book_list|
+        =render partial: "show_book_lists", locals: {book_list: book_list}
+    .mdl-cell.mdl-cell--2-col
 //= form_with url: "/login", method: :get do |form| 
   //= form.submit "sign_in"
     //redirect_to login_path
@@ -17,3 +26,4 @@ p
   //= form.submit "sign_up"
     //redirect_to @users
 
+к
