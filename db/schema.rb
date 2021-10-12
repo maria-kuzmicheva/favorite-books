@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_09_143513) do
+ActiveRecord::Schema.define(version: 2021_10_12_181332) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -96,6 +96,16 @@ ActiveRecord::Schema.define(version: 2021_10_09_143513) do
   create_table "favorite_books_users", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "favorite_book_id", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "value"
+    t.integer "user_id"
+    t.integer "favorite_book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["favorite_book_id"], name: "index_ratings_on_favorite_book_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "shortened_urls", force: :cascade do |t|
