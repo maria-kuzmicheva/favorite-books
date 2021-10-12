@@ -12,7 +12,10 @@ class BookListsController < ApplicationController
         redirect_to favorite_book_path(params[:favorite_book_id ])
         
     end
-
+    def index
+       
+        @book_lists = @current_user.book_lists
+    end
     def show
         
         @book_list = BookList.find(params[:id])

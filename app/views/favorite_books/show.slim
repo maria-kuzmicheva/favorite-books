@@ -7,7 +7,7 @@
       .mdl-grid
         .mdl-cell.mdl-cell--4-col
           img src = @book_data["volumeInfo"]["imageLinks"]["smallThumbnail"]
-        .mdl-cell.mdl-cell--6-col
+        .mdl-cell.mdl-cell--5-col
             .mdl-layout-row
               = @book_data["volumeInfo"]["title"]
             .mdl-layout-row
@@ -16,7 +16,7 @@
                 = @book_data["volumeInfo"]["authors"].join(", ")
             .mdl-layout-row
                 = @book_data["volumeInfo"]["publisher"]
-        .mdl-cell.mdl-cell--2-col
+        .mdl-cell.mdl-cell--3-col
           .mdl-layout-row
              = @book_data["volumeInfo"]["averageRating"]
              svg.star-color fill="currentColor" height="24" role="presentation" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 

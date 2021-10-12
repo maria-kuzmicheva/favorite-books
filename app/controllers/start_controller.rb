@@ -6,6 +6,10 @@ class StartController < ApplicationController
     
         @book_lists.each do |book_lists|
         end
+
+       
+             
+
     end
     
     def login

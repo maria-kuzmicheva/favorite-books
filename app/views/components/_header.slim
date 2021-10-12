@@ -4,17 +4,37 @@ header.mdl-layout__header.mdl-layout__header--scroll.mdl-color--primary
     .mdl-layout-spacer
     .nav.mdl-navigation.mdl-layout--large-screen-only
       - if @current_user.present?
-          = form_with url: "/users/log_out", method: :post do |form|
-            = form.submit 'log_out', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-      - else      
-          = form_with url: "/login", method: :get do |form| 
-            = form.submit "sign_in", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
-          = form_with url: new_user_path, method: :get do |form| 
-            = form.submit "sign_up", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+            button#demo-menu-top-right.mdl-button.mdl-js-button.mdl-button--icon
+              i.material-icons more_vert
+            ul.mdl-menu.mdl-menu--top-right.mdl-js-menu.mdl-js-ripple-effect data-mdl-for="demo-menu-top-right" 
+               
+              a.mdc-list-item href="#"
+                =link_to 'список любимых', favorite_books_path
+                i.material-icons.mdc-list-item__graphic aria-hidden="true"  star
+               
+              a.mdc-list-item href="#"
+                =link_to 'ваши буклисты',  book_lists_path
+                i.material-icons.mdc-list-item__graphic aria-hidden="true"  box
+               
+    
+                 
               
+              li.mdl-menu__item 
+                    = form_with url: "/users/log_out", method: :post do |form|
+                      = form.submit 'log_out', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+             
+
+              
+      - else      
+            = form_with url: "/login", method: :get do |form| 
+                = form.submit "sign_in", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+            = form_with url: new_user_path, method: :get do |form| 
+                = form.submit "sign_up", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                    
 
 
 
+         
 
-     
+        
 
