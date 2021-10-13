@@ -21,17 +21,16 @@ class RatingsController < ApplicationController
 
   # POST /ratings or /ratings.json
   def create
-    @rating = Rating.new(rating_params)
+    @rating = Rating.new(rating_params.merge(value: params[:commit].to_i))
 
-    respond_to do |format|
-      if @rating.save
-        format.html { redirect_to @rating, notice: "Rating was successfully created." }
-        format.json { render :show, status: :created, location: @rating }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @rating.errors, status: :unprocessable_entity }
-      end
-    end
+     @rating.save
+        flash[:notice] = "спасибо, вы поставили оценку "
+        redirect_to favorite_book_path(@rating.favorite_book)
+        #format.html { redirect_to @rating, notice: "Rating was successfully created." }
+        #format.json { render :show, status: :created, location: @rating }
+      
+    
+    
   end
 
   # PATCH/PUT /ratings/1 or /ratings/1.json
@@ -64,6 +63,6 @@ class RatingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rating_params
-      params.require(:rating).permit(:value)
+      params.require(:rating).permit(:value, :user_id, :favorite_book_id)
     end
 end

@@ -6,9 +6,10 @@
         .mdl-cell.mdl-cell--8-col
         
             .fav-book-title
-              h3 = favorite_book.title
-        
-
+              =link_to favorite_book.title, favorite_book_path(favorite_book.id)
+              
+  
+               
           
             .fav-book-author
                 h5 =  favorite_book.author_name
@@ -19,4 +20,4 @@
                     =simple_form_for favorite_book, method: :delete do |f|
                       
                       =f.button :button,  'delete', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
-          .mdl-cell.mdl-cell--2-col
+        .mdl-cell.mdl-cell--2-col

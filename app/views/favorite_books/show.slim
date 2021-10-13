@@ -31,6 +31,29 @@
                    
 
               
+      .mdl-grid
+        .mdl-cell.mdl-cell--12-col
+        
+          
+           -if @rating.present?
+            = "вы уже ! спасибо! "
+            = @rating.value
+
+           -else
+              =form_with model: Rating.new, method: :post do |form|
+                  =form.hidden_field :favorite_book_id , :value => @book.id
+                  =form.hidden_field :user_id ,          :value => @current_user.id
+                  =form.label :'вы ещё не оценили эту книгу, поставьте оценку'
+                  =form.submit :'1'
+                  =form.submit :'2'
+                  =form.submit :'3'
+                  =form.submit :'4'
+                  =form.submit :'5'
+                  =form.submit :'6'
+                  =form.submit :'7'
+                  =form.submit :'8'
+                  =form.submit :'9'
+                  =form.submit :'10'
 
       .mdl-grid
        .mdl-cell.mdl-cell--12-col
