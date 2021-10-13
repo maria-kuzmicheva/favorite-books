@@ -14,7 +14,9 @@
     .mdl-grid
         .mdl-cell.mdl-cell--2-col
         
-             = "ваша оценка"
+             = "оценка пользователя" 
+        .mdl-layout-row
+             = Rating.find_by(user_id: comment.user_id, favorite_book_id: @book.id).try(:value)
         .mdl-cell.mdl-cell--8-col
         .mdl-cell.mdl-cell--2-col
           .comment-destroy
