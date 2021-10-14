@@ -4,7 +4,12 @@ class ApplicationController < ActionController::Base
       payload = { user_id: user_id }
       JWT.encode(payload, hmac_secret, 'HS256')
     end
-  
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+    private
+    def record_not_found
+      render plain: "404 Not Found", status: 404
+    end
+    
     def hmac_secret
       ENV["API_SECRET"]
     end

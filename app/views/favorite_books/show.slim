@@ -31,7 +31,7 @@
 
               
       .mdl-grid
-        .mdl-cell.mdl-cell--12-col.book-summary
+        .mdl-cell.mdl-cell--12-col.book-author
         
           
            -if @rating.present?
@@ -53,7 +53,7 @@
                   =form.submit :'8'
                   =form.submit :'9'
                   =form.submit :'10'
-        .mdl-layout-row.book-author
+        .mdl-layout-row.book-summary
              = "средняя оценка пользователей: "
           
              = @book.ratings.average("value") 
