@@ -6,25 +6,25 @@
     .mdl-cell.mdl-cell--8-col.fb-show-common-box
       .mdl-grid
         .mdl-cell.mdl-cell--4-col
-          img src = @book_data["volumeInfo"]["imageLinks"]["smallThumbnail"]
+          img src = @book_data.dig("volumeInfo", "imageLinks", "smallThumbnail")
         .mdl-cell.mdl-cell--5-col
             .mdl-layout-row
-              = @book_data["volumeInfo"]["title"]
+              = @book_data.dig("volumeInfo" , "title")
             .mdl-layout-row
-              = @book_data["volumeInfo"]["subtitle"]
+              = @book_data.dig("volumeInfo", "subtitle")
             .mdl-layout-row
-                = @book_data["volumeInfo"]["authors"].join(", ")
+                = @book_data.dig("volumeInfo" , "authors").try(:join, ", ")
             .mdl-layout-row
-                = @book_data["volumeInfo"]["publisher"]
+                = @book_data.dig("volumeInfo", "publisher")
         .mdl-cell.mdl-cell--3-col
           .mdl-layout-row
-             = @book_data["volumeInfo"]["averageRating"]
+             = @book_data.dig("volumeInfo", "averageRating")
              svg.star-color fill="currentColor" height="24" role="presentation" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg" 
                path d=("M12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72 3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z") 
 
           .mdl-layout-row
               .mdl-chip
-                .mdl-chip__text.mdl-color-text--pink = @book_data["volumeInfo"]["maturityRating"]
+                .mdl-chip__text.mdl-color-text--pink = @book_data.dig("volumeInfo", "maturityRating")
           .mdl-layout-row
                = link_to "добавить в буклист", to_list_favorite_book_path(@book.id) , class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
 
