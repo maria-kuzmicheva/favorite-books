@@ -1,6 +1,5 @@
 
 
-
 .mdl-grid
     .mdl-cell.mdl-cell--2-col
     .mdl-cell.mdl-cell--8-col.fb-show-common-box
@@ -32,11 +31,11 @@
 
               
       .mdl-grid
-        .mdl-cell.mdl-cell--12-col
+        .mdl-cell.mdl-cell--12-col.book-summary
         
           
            -if @rating.present?
-            = "вы уже ! спасибо! "
+            = "вы уже поставили оценку! спасибо! ваша оценка: "
             = @rating.value
 
            -else
@@ -54,6 +53,17 @@
                   =form.submit :'8'
                   =form.submit :'9'
                   =form.submit :'10'
+        .mdl-layout-row.book-author
+             = "средняя оценка пользователей: "
+          
+             = @book.ratings.average("value") 
+      .mdl-grid.book-author
+        .mdl-cell.mdl-cell--12-col
+             = "всего оценок: "
+             = @book.ratings.count(:user_id)
+             
+
+
 
       .mdl-grid
        .mdl-cell.mdl-cell--12-col

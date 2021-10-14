@@ -9,7 +9,11 @@ class FavoriteBooksController < ApplicationController
     end
     
     def show
-        @book = FavoriteBook.find(params[:id])
+        @book = FavoriteBook.find(params[:id]) 
+         
+      
+        
+      
         @book_data = BookFetcher.get_by_id(@book.book_api_id)
         @favbook_users = @book.users.order(:nickname).limit(15)
         @rating = @current_user.ratings.find_by(favorite_book_id: params[:id])
