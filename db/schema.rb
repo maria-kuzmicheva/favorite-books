@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_09_131245) do
+ActiveRecord::Schema.define(version: 2021_10_15_101313) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -98,6 +98,32 @@ ActiveRecord::Schema.define(version: 2021_10_09_131245) do
     t.integer "favorite_book_id", null: false
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "value"
+    t.integer "user_id"
+    t.integer "favorite_book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["favorite_book_id"], name: "index_ratings_on_favorite_book_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
+  create_table "shortened_urls", force: :cascade do |t|
+    t.integer "owner_id"
+    t.string "owner_type", limit: 20
+    t.text "url", null: false
+    t.string "unique_key", limit: 10, null: false
+    t.string "category"
+    t.integer "use_count", default: 0, null: false
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["category"], name: "index_shortened_urls_on_category"
+    t.index ["owner_id", "owner_type"], name: "index_shortened_urls_on_owner_id_and_owner_type"
+    t.index ["unique_key"], name: "index_shortened_urls_on_unique_key", unique: true
+    t.index ["url"], name: "index_shortened_urls_on_url"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "full_name"
     t.string "nickname"
@@ -105,6 +131,7 @@ ActiveRecord::Schema.define(version: 2021_10_09_131245) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "role"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
