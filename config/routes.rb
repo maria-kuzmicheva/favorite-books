@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   post '/rate' => 'rater#create', :as => 'rate'
   resources :ratings
   root "start#search"

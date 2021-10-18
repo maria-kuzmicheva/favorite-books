@@ -6,6 +6,9 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+I18n.default_locale = :ru
+
+I18n.locale = :ru
 module FavoriteBooks
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

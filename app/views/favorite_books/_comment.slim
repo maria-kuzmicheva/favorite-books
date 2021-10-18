@@ -6,7 +6,12 @@
         .mdl-cell.mdl-cell--8-col
         .mdl-cell.mdl-cell--2-col
             .comment-date
-             = comment.created_at.strftime("%Y-%m-%d")
+             - start_date = comment.created_at.strftime("%Y-%m-%d")
+             - end_date = Date.current
+
+             = "опубликовано #{distance_of_time_in_words(start_date, end_date)} назад"
+               
+
     .mdl-grid
             .mdl-cell.mdl-cell--12-col
             .comment-text
