@@ -13,7 +13,8 @@
               h3 = book["volumeInfo"]["title"]
               
             .book-summary
-              h4 = book ["volumeInfo"]["description"]
+               h4 = "#{book ["volumeInfo"]["description"].first(50)}..."
+                
             .mdl-grid
               .mdl-cell.mdl-cell--9-col
               .mdl-cell.mdl-cell--3-col  
