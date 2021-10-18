@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  ActiveAdmin.routes(self)
+ 
   post '/rate' => 'rater#create', :as => 'rate'
   resources :ratings
   root "start#search"
@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
   get '/:id' => "shortener/shortened_urls#show"
 
-  
+  get '/admin/users', to: "admin#users"
 
 
   #get "/users_accounts", to: "users_accounts"#show

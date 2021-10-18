@@ -7,6 +7,17 @@ class AdminPolicy
     end
   
     def stat?
+      admin?
+    end
+    
+    def users?
+      admin?
+    end
+
+
+    private
+    
+    def admin?
       user.role == "admin"
     end
 
