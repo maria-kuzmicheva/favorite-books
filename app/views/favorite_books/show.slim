@@ -75,8 +75,9 @@
 
       .mdl-grid
         .mdl-cell.mdl-cell--12-col
-         
-         
+         -if @current_user.ban? 
+            =flash[:notice] = "у вас нет возможности"
+         -else
             .mdl-layout_header-row 
                 =form_with model: Comment.new, method: :post do |form| 
                     =form.hidden_field :favorite_book_id , :value => @book.id
