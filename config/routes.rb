@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get '/:id' => "shortener/shortened_urls#show"
 
   get '/admin/users', to: "admin#users"
+  patch '/admin/toggle_ban/', to: "admin#toggle_ban"
 
 
   #get "/users_accounts", to: "users_accounts"#show

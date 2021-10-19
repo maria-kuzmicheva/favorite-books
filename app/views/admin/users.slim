@@ -3,18 +3,18 @@
 .mdl-grid
     .mdl-cell.mdl-cell--4-col
     .mdl-cell.mdl-cell--4-col
-        table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+        table.mdl-data-table.mdl-js-data-table.mdl-data-table.mdl-shadow--2dp
             caption Юзеры
             tr
                 th имя пользователя
                 
             -@users.each do |user|
                 tr
-                    td = user.nickname
+                    td = user.email
 
-                    =simple_form_for user, method: :patch do |f|
-                    
-                      td = f.button :button,  ban_button_name(user), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+                    =form_with url: "/admin/toggle_ban", method: :patch do |f|
+                       td = f.hidden_field :user_id , :value => user.id
+                       td = f.submit  "#{ban_button_name(user)}", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
                      
 
     .mdl-cell.mdl-cell--4-col

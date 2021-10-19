@@ -13,7 +13,9 @@ class AdminPolicy
     def users?
       admin?
     end
-
+    def toggle_ban?
+      admin?
+    end
 
     private
     

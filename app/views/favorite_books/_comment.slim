@@ -1,37 +1,38 @@
-.comment-card.
-    .mdl-grid
-        .mdl-cell.mdl-cell--2-col
-          .comment-author
-            = comment.user.nickname
-        .mdl-cell.mdl-cell--8-col
-        .mdl-cell.mdl-cell--2-col
-            .comment-date
-             - start_date = comment.created_at.strftime("%Y-%m-%d")
-             - end_date = Date.current
 
-             = "опубликовано #{distance_of_time_in_words(start_date, end_date)} назад"
-               
+  .comment-card.
+      .mdl-grid
+          .mdl-cell.mdl-cell--2-col
+            .comment-author
+              = comment.user.nickname
+          .mdl-cell.mdl-cell--8-col
+          .mdl-cell.mdl-cell--2-col
+              .comment-date
+              - start_date = comment.created_at.strftime("%Y-%m-%d")
+              - end_date = Date.current
 
-    .mdl-grid
-            .mdl-cell.mdl-cell--12-col
-            .comment-text
-                = raw(comment.content)
-    .mdl-grid
-        .mdl-cell.mdl-cell--2-col
-        
-             = "оценка пользователя" 
-       
-             = Rating.find_by(user_id: comment.user_id, favorite_book_id: @book.id).try(:value)
-        .mdl-cell.mdl-cell--8-col
-        .mdl-cell.mdl-cell--2-col
-          .comment-destroy
-          
-            =simple_form_for comment, method: :delete do |f|
-                = f.button :button,  'delete', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
-
-
-
-            
-       
+              = "опубликовано #{distance_of_time_in_words(start_date, end_date)} назад"
                 
+
+      .mdl-grid
+              .mdl-cell.mdl-cell--12-col
+              .comment-text
+                  = raw(comment.content)
+      .mdl-grid
+          .mdl-cell.mdl-cell--2-col
+          
+              = "оценка пользователя" 
+        
+              = Rating.find_by(user_id: comment.user_id, favorite_book_id: @book.id).try(:value)
+          .mdl-cell.mdl-cell--8-col
+          .mdl-cell.mdl-cell--2-col
+            .comment-destroy
+            
+              =simple_form_for comment, method: :delete do |f|
+                  = f.button :button,  'delete', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+
+
+
+              
+        
+                  
     

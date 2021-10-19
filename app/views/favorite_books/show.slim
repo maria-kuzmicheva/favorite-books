@@ -75,7 +75,9 @@
 
       .mdl-grid
         .mdl-cell.mdl-cell--12-col
-          .mdl-layout_header-row 
+         
+         
+            .mdl-layout_header-row 
                 =form_with model: Comment.new, method: :post do |form| 
                     =form.hidden_field :favorite_book_id , :value => @book.id
                     =form.hidden_field :user_id ,          :value => @current_user.id
