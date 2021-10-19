@@ -14,7 +14,7 @@ class AdminController < ApplicationController
    
    def toggle_ban
       authorize :admin
-      User.find_by(params[:user_id]).toggle!(:ban)
+       User.find_by(id: params[:user_id]).toggle!(:ban)
       redirect_back(fallback_location: admin_users_path)
    end
    
