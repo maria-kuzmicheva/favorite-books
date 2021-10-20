@@ -67,8 +67,8 @@ class UsersController < ApplicationController
     end
 
     private 
-    def right_password?
-        @user.password == params[:password]
-    end
-   
-end
+      def right_password?
+          @user.password == params[:password]
+      end
+    
+  end

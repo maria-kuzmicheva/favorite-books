@@ -29,4 +29,9 @@ class User < ApplicationRecord
     
 
     validates :password, confirmation: true
+     
+
+    def admin? 
+      self.role == "admin"
+    end
 end

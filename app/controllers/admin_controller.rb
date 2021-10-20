@@ -8,8 +8,12 @@ class AdminController < ApplicationController
    end
    def users
       authorize :admin
-      @users = User.all.page(params[:page]).per(20)
-
+      
+      @users = User.all
+      @users = @users.where(ban: params[:ban]) if ['true', 'false'].include?(params[:ban])
+       
+       @users = @users.page(params[:page]).per(20)
+      
    end
    
    def toggle_ban
