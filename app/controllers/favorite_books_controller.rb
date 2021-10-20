@@ -5,15 +5,16 @@ class FavoriteBooksController < ApplicationController
 
     def index
         flash[:notice] = "ваш имейл #{@current_user.email}" 
-        @books = @current_user.favorite_books.order(:created_at).page(params[:page]).per(2)
+        
+        order_column    = params["column"]    || "created_at"
+        order_direction = params["direction"] || "asc"
+
+        @books = @current_user.favorite_books.order({order_column => order_direction}).page(params[:page]).per(10)
     end
     
     def show
         @book = FavoriteBook.find(params[:id]) 
          
-      
-        
-      
         @book_data = BookFetcher.get_by_id(@book.book_api_id)
         @favbook_users = @book.users.order(:nickname).limit(15)
         @rating = @current_user.ratings.find_by(favorite_book_id: params[:id])

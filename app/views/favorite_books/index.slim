@@ -4,12 +4,15 @@
    .mdl-cell.mdl-cell--4-col
    .mdl-cell.mdl-cell--8-col.header
       .mdc-item__primary-text СПИСОК ЛЮБИМЫХ
+      =form_with url:  "/favorite_books", method: :get do |form|
+         =form.select  :column, ["title", "author_name"]
+         =form.select  :direction, ["desc", "asc"]
+         =form.submit "отфильтровать"
+         - @books.each do |favorite_book|
+            .mdl-grid
+               .mdl-cell.mdl-cell--2-col
+               .mdl-cell.mdl-cell--8-col
+                  = render partial: "card", locals: { favorite_book: favorite_book}
    .mdl-cell.mdl-cell--2-col
-- @books.find_each do |favorite_book|
-   .mdl-grid
-      .mdl-cell.mdl-cell--2-col
-      .mdl-cell.mdl-cell--8-col
-          = render partial: "card", locals: { favorite_book: favorite_book}
-      .mdl-cell.mdl-cell--2-col
 = paginate @books
 

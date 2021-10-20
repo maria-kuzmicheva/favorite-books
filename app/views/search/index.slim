@@ -1,8 +1,11 @@
 .mdl-grid
     .mdl-cell.mdl-cell--4-col
+    
+
     .mdl-cell.mdl-cell--4-col.header
       .mdc-item__primary-text Результаты поиска:
     .mdl-cell.mdl-cell--4-col
+        
 - @books_data.each  do |book|
 
   = render partial: "book_card", locals: { book: book}

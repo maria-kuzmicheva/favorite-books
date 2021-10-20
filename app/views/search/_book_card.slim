@@ -13,7 +13,7 @@
               h3 = book["volumeInfo"]["title"]
               
             .book-summary
-               h4 = "#{book ["volumeInfo"]["description"].first(50)}..."
+              h4 = book["volumeInfo"]["description"].try(:truncate, 50)
                 
             .mdl-grid
               .mdl-cell.mdl-cell--9-col
