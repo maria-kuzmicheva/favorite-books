@@ -1,0 +1,32 @@
+.mdl-grid
+    .mdl-cell.mdl-cell--4-col
+    .mdl-cell.mdl-cell--4-col
+            =form_with url:  "/admin/book_lists", method: :get do |form|
+                =form.select  :public, ["all", "true", "false"]
+                =form.select  :column, ["list_title", "user.nickname", "created_at", "public"]
+                =form.select  :direction, ["desc", "asc"]
+                
+                =form.submit "отфильтровать"
+    .mdl-cell.mdl-cell--4-col
+
+.mdl-grid
+    .mdl-cell.mdl-cell--2-col
+    .mdl-cell.mdl-cell--8-col
+      table.mdl-data-table.mdl-js-data-table.mdl-data-table.mdl-shadow--2dp
+            caption все буклисты
+            tr
+                th название буклиста
+                th никнейм создателя буклиста
+                th дата создания
+                th публичный доступ
+                
+
+            - @book_lists.each do |book_list |
+                tr
+                    td = book_list.list_title
+                    td = book_list.user.nickname
+                    td = book_list.created_at.strftime("%Y-%m-%d")
+                    td = book_list.public
+
+    .mdl-cell.mdl-cell--2-col
+= paginate @book_lists

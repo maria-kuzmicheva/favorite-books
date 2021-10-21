@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 
   get '/admin/users', to: "admin#users"
   patch '/admin/toggle_ban/', to: "admin#toggle_ban"
+  get '/admin/book_lists', to: "admin#book_lists"
    
   #get "/users_accounts", to: "users_accounts"#show
 

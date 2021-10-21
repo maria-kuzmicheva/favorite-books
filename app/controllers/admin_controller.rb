@@ -22,5 +22,16 @@ class AdminController < ApplicationController
       redirect_back(fallback_location: admin_users_path)
    end
    
+   def book_lists
+      authorize :admin
+      @book_lists = BookList.all
+      @book_lists = @book_lists.page(params[:page]).per(20)
 
+      order_column    = params["column"]    || "created_at"
+      order_direction = params["direction"] || "asc"
+      @book_lists = @book_lists.order({order_column => order_direction})
+
+
+      @book_lists= @book_lists.where(public: params[:public]) if ['true', 'false'].include?(params[:public])
+   end
 end

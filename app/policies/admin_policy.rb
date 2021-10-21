@@ -16,6 +16,9 @@ class AdminPolicy
     def toggle_ban?
       admin?
     end
+    def book_lists?
+      admin?
+    end
 
     private
     
