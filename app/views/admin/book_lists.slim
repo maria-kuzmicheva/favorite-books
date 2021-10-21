@@ -3,7 +3,7 @@
     .mdl-cell.mdl-cell--4-col
             =form_with url:  "/admin/book_lists", method: :get do |form|
                 =form.select  :public, ["all", "true", "false"]
-                =form.select  :column, ["list_title", "user.nickname", "created_at", "public"]
+                =form.select  :column, ["list_title", "nickname" , "created_at", "public"]
                 =form.select  :direction, ["desc", "asc"]
                 
                 =form.submit "отфильтровать"
@@ -21,7 +21,7 @@
                 th публичный доступ
                 
 
-            - @book_lists.each do |book_list |
+            - @book_lists.each do |book_list|
                 tr
                     td = book_list.list_title
                     td = book_list.user.nickname
@@ -29,4 +29,3 @@
                     td = book_list.public
 
     .mdl-cell.mdl-cell--2-col
-= paginate @book_lists

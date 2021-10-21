@@ -1,0 +1,26 @@
+
+.mdl-grid
+    .mdl-cell.mdl-cell--2-col
+    .mdl-cell.mdl-cell--8-col
+       =@current_user.full_name
+       table.mdl-data-table.mdl-js-data-table.mdl-data-table.mdl-shadow--2dp
+            caption Мои буклисты
+            tr
+                th название буклиста
+                th дата создания
+                th публичный доступ
+                th изменить доступ
+                
+
+            - @book_lists.each do |book_list|
+                tr
+                    td = link_to book_list.list_title, book_list_path(book_list.id)
+                    td = book_list.created_at.strftime("%Y-%m-%d")
+                    td = book_list.public
+                    -if book_list.public?
+                        td =form_with url: "/users/toggle_public", method: :patch do |f|
+                             = f.hidden_field :book_list_id , :value => book_list.id
+                             = f.submit  "изменить", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+
+
+

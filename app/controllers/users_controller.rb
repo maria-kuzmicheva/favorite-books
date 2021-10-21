@@ -66,9 +66,25 @@ class UsersController < ApplicationController
           end
     end
 
+    def show
+      
+      require_current_user
+      if (@current_user.book_lists.find_by(id: params[:id]).present? if @current_user.present?)
+        
+      end
+      @book_lists = BookList.all
+
+    end
+    def toggle_public
+       BookList.find_by(id: params[:book_list_id]).toggle!(:public)
+       redirect_back(fallback_location: users_show_path)
+    end
+
     private 
       def right_password?
           @user.password == params[:password]
       end
     
+
+
   end
