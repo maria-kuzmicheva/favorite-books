@@ -26,7 +26,7 @@
                     -if !user.admin?
                        =form_with url: "/admin/toggle_ban", method: :patch do |f|
                         td = f.hidden_field :user_id , :value => user.id
-                        td = f.submit  "#{ban_button_name(user)}", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+                        td = f.submit ban_button_name(user), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
                     
                       
                       

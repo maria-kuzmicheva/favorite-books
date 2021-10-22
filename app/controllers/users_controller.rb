@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    
+    before_action :auth, except: [:login]
+
     def create 
         if correct_password? 
             @user = User.new(user_params)
@@ -27,9 +28,7 @@ class UsersController < ApplicationController
       new_password =~ /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/ && (new_password == new_password_confirmation)
     end
 
-    def user_params
-      params.require(:user).permit(:full_name, :nickname, :email, :new_password, :new_password_confirmation)
-    end
+
  
 
 
@@ -67,17 +66,14 @@ class UsersController < ApplicationController
     end
 
     def show
-      
-      require_current_user
-      if (@current_user.book_lists.find_by(id: params[:id]).present? if @current_user.present?)
-        
-      end
-      @book_lists = BookList.all
 
+      require_current_user
+      @book_lists = @current_user.book_lists
     end
+
     def toggle_public
        BookList.find_by(id: params[:book_list_id]).toggle!(:public)
-       redirect_back(fallback_location: users_show_path)
+       redirect_back(fallback_location: users_path(@current_user.id))
     end
 
     private 
@@ -85,6 +81,9 @@ class UsersController < ApplicationController
           @user.password == params[:password]
       end
     
+      def user_params
+        params.require(:user).permit(:full_name, :nickname, :email, :new_password, :new_password_confirmation)
+      end
 
 
   end

@@ -17,10 +17,9 @@
                     td = link_to book_list.list_title, book_list_path(book_list.id)
                     td = book_list.created_at.strftime("%Y-%m-%d")
                     td = book_list.public
-                    -if book_list.public?
-                        td =form_with url: "/users/toggle_public", method: :patch do |f|
-                             = f.hidden_field :book_list_id , :value => book_list.id
-                             = f.submit  "изменить", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+                    td = form_with url:  toggle_public_users_path, method: :patch do |f|
+                        = f.hidden_field :book_list_id , :value => book_list.id
+                        = f.submit  public_button(book_list), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
 
 
 
