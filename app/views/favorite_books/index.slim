@@ -12,7 +12,7 @@
             .mdl-grid
                .mdl-cell.mdl-cell--2-col
                .mdl-cell.mdl-cell--8-col
-                  = render partial: "card", locals: { favorite_book: favorite_book}
+                  = render partial: "shared/favorite_book_card", locals: { book: favorite_book}
    .mdl-cell.mdl-cell--2-col
 = paginate @books
 

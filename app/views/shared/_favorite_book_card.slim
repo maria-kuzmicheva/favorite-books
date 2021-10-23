@@ -1,0 +1,34 @@
+.mdl-grid
+    .mdl-cell.mdl-cell--2-col
+    .mdl-cell.mdl-cell--8-col
+      
+      .card
+        .mdl-cell.mdl-cell--4-col
+        .book-image
+              img src = book.small_thumbnail width="250"
+        .mdl-cell.mdl-cell--12-col
+        
+            .book-title
+              h3 = link_to book.title, favorite_books_path(@book_api_id)
+                 
+              
+            .book-summary
+              h4 = book.description.try(:truncate, 50)
+            .mdl-grid
+              .mdl-cell.mdl-cell--9-col
+              .mdl-cell.mdl-cell--3-col  
+                .book-author
+                  h5 =  book.authors.try(:join, ", ")
+            .mdl-grid
+              .mdl-cell.mdl-cell--9-col
+              .mdl-cell.mdl-cell--3-col
+                      
+                .favorite
+                  =simple_form_for(FavoriteBook.new) do |f|
+                    =f.hidden_field :title, :value => book.title
+                    =f.hidden_field :author_name, :value => book.authors
+                    =f.hidden_field :book_api_id, :value => book.book_api_id
+                    =f.button :button, class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+          
+
+            

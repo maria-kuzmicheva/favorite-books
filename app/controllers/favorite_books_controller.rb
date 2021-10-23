@@ -13,13 +13,22 @@ class FavoriteBooksController < ApplicationController
     end
     
     def show
-        @book = FavoriteBook.find(params[:id]) 
+        @book = if params[:id] =~ /\D/ #for book_api_id
+            FavoriteBook.find_or_create_by(book_api_id: params[:id])
+        else 
+            FavoriteBook.find_by(id: params[:id]) 
+        end
+   
          
-        @book_data = BookFetcher.get_by_id(@book.book_api_id)
+        #@book_data = BookFetcher.get_by_id(@book.book_api_id)
+      
+
         @favbook_users = @book.users.order(:nickname).limit(15)
         @rating = @current_user.ratings.find_by(favorite_book_id: params[:id])
    
     end
+
+ 
 
     def to_list
         @user_lists = @current_user.book_lists

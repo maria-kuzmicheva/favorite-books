@@ -8,7 +8,7 @@
         
 - @books_data.each  do |book|
 
-  = render partial: "book_card", locals: { book: book}
+  = render partial: "shared/favorite_book_card", locals: { book: book}
 
 
 - if params[:start_index].present? && (params[:start_index].to_i) > 10

@@ -8,10 +8,11 @@ class SearchController < ApplicationController
 
         search_results = BookFetcher.call(params[:query], params[:start_index])
          
-
-        @books_data = search_results.to_a
+        
+        @books_data = search_results.to_favorite_books
         
     end
+    
     
 
 end
