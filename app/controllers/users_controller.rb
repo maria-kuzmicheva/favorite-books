@@ -39,6 +39,8 @@ class UsersController < ApplicationController
             if right_password?
                 jwt_token = token(@user.id)
                 cookies[:auth_token] = jwt_token
+               
+                
                 redirect_to favorite_books_path
             else
                 flash[:notice] = " извините, пароль неверен" 
@@ -50,6 +52,7 @@ class UsersController < ApplicationController
             redirect_to root_path
             
           end
+        
     end
 
     def log_out

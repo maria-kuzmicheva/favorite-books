@@ -10,6 +10,10 @@ class FavoriteBooksController < ApplicationController
         order_direction = params["direction"] || "asc"
 
         @books = @current_user.favorite_books.order({order_column => order_direction}).page(params[:page]).per(10)
+        respond_to do |format|
+            format.html
+            format.json { render json: @books }
+          end
     end
     
     def show
