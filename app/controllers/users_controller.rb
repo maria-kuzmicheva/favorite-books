@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :auth, except: [:login]
-
+    protect_from_forgery except: :login
     def create 
         if correct_password? 
             @user = User.new(user_params)
@@ -33,24 +33,37 @@ class UsersController < ApplicationController
 
 
     def login 
+      
         @user = User.find_by(email: params[:email])
+        
           if @user.present?
 
             if right_password?
                 jwt_token = token(@user.id)
                 cookies[:auth_token] = jwt_token
                
-                
-                redirect_to favorite_books_path
+                respond_to do |format|
+                  format.html {redirect_to favorite_books_path}
+                  format.json { render json: {token: jwt_token} }
+                end
             else
                 flash[:notice] = " извините, пароль неверен" 
-                redirect_to login_path
+                respond_to do |format|
+                  format.html {redirect_to login_path}
+                  format.json { render json: {error: 'password incorrect' }}
+
+                end
+                
             end
                
           else
             flash[:notice] = " извините, пользователь не найден" 
-            redirect_to root_path
             
+              respond_to do |format|
+                  format.html {redirect_to root_path}
+                  format.json { render json: {error: 'user not found' }}
+                
+              end
           end
         
     end
