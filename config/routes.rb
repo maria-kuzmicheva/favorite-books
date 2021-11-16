@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   
   get "/admin/stat", to: "admin#stat"
 
-  
+  get '/book_lists/public', to: 'book_lists#public'
   
   resources :book_lists do
     post   'add_book',       on: :collection 
@@ -45,6 +45,11 @@ Rails.application.routes.draw do
   get '/admin/users', to: "admin#users"
   patch '/admin/toggle_ban/', to: "admin#toggle_ban"
   get '/admin/book_lists', to: "admin#book_lists"
+
+  get '/admin/favorite_books_report', to: "admin#favorite_books_report"
+
+ 
+  
   
   #get "/users_accounts", to: "users_accounts"#show
 

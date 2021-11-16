@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :auth, except: [:login]
+    before_action :require_current_user
     protect_from_forgery except: :login
     def create 
         if correct_password? 
@@ -91,14 +92,22 @@ class UsersController < ApplicationController
        BookList.find_by(id: params[:book_list_id]).toggle!(:public)
        redirect_back(fallback_location: users_path(@current_user.id))
     end
-
+   
+    def edit
+      
+    end
+    def update
+      @current_user.update!(user_params)
+      flash[:notice] = " обновление успешно сохранено" 
+      redirect_to @current_user
+    end
     private 
       def right_password?
           @user.password == params[:password]
       end
     
       def user_params
-        params.require(:user).permit(:full_name, :nickname, :email, :new_password, :new_password_confirmation)
+        params.require(:user).permit(:full_name, :nickname, :email, :new_password, :new_password_confirmation, :avatar)
       end
 
 

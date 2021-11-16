@@ -1,6 +1,6 @@
 class BookListsController < ApplicationController
     
-    before_action :auth, except: [:show]
+    before_action :auth, except: [:show, :public]
 
     def create
     end
@@ -42,4 +42,13 @@ class BookListsController < ApplicationController
     def delete
     end
     
+    def public
+       @book_lists = BookList.shared.page(params[:page]).per(20)
+        respond_to do |format|
+            format.html
+            format.json { render json: @book_lists }
+          end
+        
+        
+    end
 end

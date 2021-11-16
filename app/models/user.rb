@@ -5,6 +5,10 @@ class User < ApplicationRecord
     has_many :ratings
     has_many :rating_books, through: :ratings, source: :favorite_book
     
+    has_one_attached :avatar do |attachable|
+      attachable.variant :thumb, resize: "100x100"
+    end
+    
     include ::BCrypt
 
     #EMAIL_REGEX = /[\\w!#$%&'*+\/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+\/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$/ 

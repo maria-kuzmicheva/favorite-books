@@ -1,0 +1,9 @@
+.mdl-grid
+    .mdl-cell.mdl-cell--2-col
+    .mdl-cell.mdl-cell--8-col
+       =form_with model: @current_user,  method: :patch do |form|
+            =form.text_field :full_name 
+            
+            img src = @current_user.avatar
+            =form.submit "сохранить изменения"
+    .mdl-cell.mdl-cell--2-col

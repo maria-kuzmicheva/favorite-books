@@ -86,6 +86,13 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.10.0)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
     faraday (1.6.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
@@ -146,6 +153,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.4-x86_64-darwin)
       racc (~> 1.4)
+    paranoia (2.4.3)
+      activerecord (>= 4.0, < 6.2)
     public_suffix (4.0.6)
     puma (5.4.0)
       nio4r (~> 2.0)
@@ -191,10 +200,18 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.1.1)
+    rexml (3.2.4)
+    roo (2.8.3)
+      nokogiri (~> 1)
+      rubyzip (>= 1.3.0, < 3.0.0)
     rqrcode (2.1.0)
       chunky_png (~> 1.0)
       rqrcode_core (~> 1.0)
     rqrcode_core (1.2.0)
+    rspec (3.10.0)
+      rspec-core (~> 3.10.0)
+      rspec-expectations (~> 3.10.0)
+      rspec-mocks (~> 3.10.0)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
@@ -289,18 +306,24 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   dotenv-rails
+  factory_bot_rails
+  faker
   faraday
   image_processing
   jbuilder (~> 2.7)
   jwt
   kaminari
   listen (~> 3.3)
+  paranoia (~> 2.2)
   puma (~> 5.0)
   pundit
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4)
   ratyrate
+  rexml
+  roo
   rqrcode
+  rspec
   rspec-rails (~> 5.0.0)
   russian
   sass-rails (>= 6)

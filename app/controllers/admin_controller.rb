@@ -33,4 +33,9 @@ class AdminController < ApplicationController
                             .per(20) 
       @book_lists = @book_lists.where(public: params[:public]) if ['true', 'false'].include?(params[:public])
    end
+
+   def favorite_books_report
+      FavoriteBooksJob.perform_later
+      head :ok
+   end
 end

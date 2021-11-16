@@ -2,7 +2,8 @@
 .mdl-grid
     .mdl-cell.mdl-cell--2-col
     .mdl-cell.mdl-cell--8-col
-       =@current_user.full_name
+       = @current_user.full_name
+       //= url_for(@current_user.avatar)
        table.mdl-data-table.mdl-js-data-table.mdl-data-table.mdl-shadow--2dp
             caption Мои буклисты
             tr
