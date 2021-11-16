@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Веб-сервис для поиска и составления подборок книг.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  Сервис получает данные для книг из API Google Books. Предполагает создание личного кабинета пользователя или администратора. Вход в профиль вохможен благодаря JWT - аутентификации. Поиск книги по ключевому слову в названии (результат выдаётся с помощью пагинации по 10 книг на странице). Добавление книги в список "my favorite books" или в собственный booklist пользователя. Для каждой книги из списка формируется собственная страница, где представлена информация об издании, рейтинге среди пользователей и предоставлены возможности оценки и оставления комментариев. Для каждого booklist можно сгенерировать уникальный QR - код. Администратор обладает возможностью блокировки пользователя и имеет доступ к статистике всех пользователей.  
