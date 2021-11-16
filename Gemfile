@@ -87,10 +87,11 @@ gem 'rspec'
 
 gem "paranoia", "~> 2.2"
 
-
+gem 'rails-controller-testing'
 
 group :development, :test do
   gem 'factory_bot_rails'
 end
+
 
 
